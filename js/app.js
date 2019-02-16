@@ -22,7 +22,7 @@ Enemy.prototype.update = function(dt) {
         this.x = -50;
         this.speed = 100 + Math.floor(Math.random() * 222); // ramdomize the enemies
     }
-    if(player.x < this.x + 80 && player.x + 80 > this.x && player.y < this.y + 60 && 60 + player.y > this.y){
+    if(player.x < this.x + 80 && player.x + 80 > this.x && player.y < this.y + 60 && 60 + player.y > this.y){ //check the collisions
         player.x = 202; // reset the position of player to the beginning
         player.y = 405;
     }
@@ -83,9 +83,9 @@ Player.prototype.handleInput = function(keyPress){ //I can check if the sprite a
 const allEnemies = [];
 var enemyLoc = [63,147,230];//initial position for enemies
 
-enemyLoc.forEach(function(yLoc){
+enemyLoc.forEach(function(yLoc){ 
     enemy = new Enemy(0,yLoc,200);
-    allEnemies.push(enemy);
+    allEnemies.push(enemy); // push all enemies in array
 })
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this
