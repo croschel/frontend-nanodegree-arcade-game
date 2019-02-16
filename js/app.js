@@ -1,6 +1,6 @@
 // Enemies our player must avoid
 
-//https://www.youtube.com/watch?time_continue=1&amp=&v=oLSu3zc2jSA // assistir depois
+//https://www.youtube.com/watch?time_continue=1&amp=&v=oLSu3zc2jSA // watch Later
 
 var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
