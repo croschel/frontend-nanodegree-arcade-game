@@ -12,7 +12,7 @@ var Enemy = function(x,y,speed) {
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
+Enemy.prototype.update = function(dt,player) {
     // You should multiply any movement by the dt parameter
     this.x += this.speed * dt; // the moviment for enemies
     console.log(this.x);
@@ -22,7 +22,7 @@ Enemy.prototype.update = function(dt) {
         this.x = -50;
         this.speed = 100 + Math.floor(Math.random() * 222); // ramdomize the enemies
     }
-    if(player.x < this.x + 80 && player.x + 80 > this.x && player.y < this.y + 60 && 60 + player.y > this.y){ //check the collisions
+    if(player.x < this.x + 80 && player.x + 80 > this.x && player.y < this.y + 60 && 60 + player.y > this.y){ 
         player.x = 202; // reset the position of player to the beginning
         player.y = 405;
     }
