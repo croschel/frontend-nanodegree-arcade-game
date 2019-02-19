@@ -12,7 +12,7 @@ var Enemy = function(x,y,speed) {
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt,player) {
+Enemy.prototype.update = function(dt,spriteOne) {
     // You should multiply any movement by the dt parameter
     this.x += this.speed * dt; // the moviment for enemies
     console.log(this.x);
@@ -22,9 +22,9 @@ Enemy.prototype.update = function(dt,player) {
         this.x = -50;
         this.speed = 100 + Math.floor(Math.random() * 222); // ramdomize the enemies
     }
-    if(player.x < this.x + 80 && player.x + 80 > this.x && player.y < this.y + 60 && 60 + player.y > this.y){ 
-        player.x = 202; // reset the position of player to the beginning
-        player.y = 405;
+    if(spriteOne.x < this.x + 80 && spriteOne.x + 80 > this.x && spriteOne.y < this.y + 60 && 60 + spriteOne.y > this.y){ 
+        spriteOne.x = 202; // reset the position of player to the beginning
+        spriteOne.y = 405;
     }
 };
 
@@ -46,6 +46,12 @@ Player.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if(this.y < 0){ //if I arrive in water so... I have to start the game again
+        setTimeout(function(){
+            this.x = 202;
+            this.y = 405;
+        },600);
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -68,12 +74,7 @@ Player.prototype.handleInput = function(keyPress){ //I can check if the sprite a
     if(keyPress == 'down' && this.y < 405){
         this.y +=83;
     }
-    if(this.y < 0){ //if I arrive in water so... I have to start the game again
-        setTimeout(function(){
-            player.x = 202;
-            player.y = 405;
-        },600);
-    }
+    
 }
 
 // Now instantiate your objects.
